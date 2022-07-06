@@ -71,6 +71,15 @@ class BinaryTree:
         else:
             print('Node exist')
 
+    def height(self, node: Node) -> int:
+        if not node:
+            return -1
+        
+        left = self.height(node.left)
+        right = self.height(node.right)
+
+        return 1 + max(left, right)
+
 b_tree = BinaryTree(Node(1))
 b_tree.root.left = Node(2)
 b_tree.root.right = Node(3)
@@ -92,3 +101,4 @@ b_tree.print_orders()
 print(f'search: {b_tree.search(b_tree.root, 7)}')
 print(f'insert: {b_tree.insert(b_tree.root, 8)}')
 b_tree.print_orders()
+print(f'height: {b_tree.height(b_tree.root)}')
